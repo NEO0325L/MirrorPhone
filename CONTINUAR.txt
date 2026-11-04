@@ -71,6 +71,14 @@ El ZIP es una instantánea: no se actualiza después de descargarlo.
   el equipo final del usuario.
 - No se modificó ni desplegó de nuevo el servidor remoto en esta adaptación.
 
+LICENCIA ACTUAL
+
+El código propio se publica bajo MIT (LICENSE). Conservar avisos de terceros.
+El kit experimental usa pymobiledevice3 bajo GPL-3.0; esa dependencia no se
+relicencia como MIT. Las próximas compilaciones incluyen los avisos en
+resources/licenses/. Los paquetes preliminares anteriores no se recompilaron
+con este cambio de licencia.
+
 4. ESTRUCTURA DEL PROYECTO
 
 README.md                  Entrada, uso, instalación y enlaces.

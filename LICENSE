@@ -1,7 +1,21 @@
-MirrorPhone — código propio
+MIT License
 
-Copyright (c) 2026 NEO0325L. Todos los derechos reservados.
+Copyright (c) 2026 NEO0325L
 
-No se concede una licencia general para utilizar, modificar o redistribuir el código propio fuera de los derechos necesarios para consultar este repositorio mediante GitHub. El carácter público del repositorio no equivale a una licencia de software de código abierto. Para otros usos se requiere permiso del titular.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Las dependencias y componentes de terceros conservan sus respectivas licencias. Este aviso no sustituye ni restringe esos permisos.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

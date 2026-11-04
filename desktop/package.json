@@ -5,7 +5,7 @@
   "description": "Pantalla y sonido del iPhone en Windows y Linux Mint",
   "main": "main.cjs",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "author": {
     "name": "NEO0325L",
     "url": "https://github.com/NEO0325L"
@@ -71,7 +71,17 @@
     "compression": "normal",
     "deb": {
       "compression": "gz"
-    }
+    },
+    "extraResources": [
+      {
+        "from": "../LICENSE",
+        "to": "licenses/MirrorPhone-MIT.txt"
+      },
+      {
+        "from": "../THIRD_PARTY_NOTICES.md",
+        "to": "licenses/THIRD_PARTY_NOTICES.md"
+      }
+    ]
   },
   "homepage": "https://github.com/NEO0325L/MirrorPhone",
   "desktopName": "mirrorphone.desktop",

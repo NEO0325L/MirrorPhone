@@ -1,5 +1,10 @@
 # Cambios
 
+## Sin publicar
+
+- Código propio publicado bajo MIT; documentación y metadatos de paquete alineados.
+- Avisos MIT y de terceros incluidos en las futuras compilaciones de escritorio.
+
 ## 1.3.0 — 2026-11-04 — versión de prueba multiplataforma
 
 - Receptor compartido para Windows 11 x64 y Linux Mint 22.x x64.

@@ -24,4 +24,4 @@ Crea una rama descriptiva y commits pequeños. La pull request debe explicar el 
 
 No subas `node_modules`, paquetes de distribución al historial Git, credenciales, archivos de emparejamiento, certificados, perfiles de firma, vídeos, capturas personales ni diagnósticos de sesiones reales. Distribuye binarios mediante Releases y dependencias grandes mediante descargas verificadas.
 
-Antes de una versión, sigue [VALIDATION.md](docs/VALIDATION.md). La política de licencia se encuentra en `LICENSE`; que el código sea público no concede automáticamente una licencia de redistribución.
+Antes de una versión, sigue [VALIDATION.md](docs/VALIDATION.md). El código propio se publica bajo MIT, según `LICENSE`. Las contribuciones de código propio deben poder distribuirse bajo esa licencia. Conserva los avisos y condiciones de componentes externos; no cambies su licencia al incorporarlos.

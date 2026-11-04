@@ -49,7 +49,9 @@ El tráfico multimedia usa WebRTC directo cuando es posible y TURN cuando la red
 
 ## Licencia
 
-Código propio reservado, sin licencia de redistribución concedida. Dependencias de terceros conservan sus licencias; Electron incluye sus avisos en los paquetes distribuidos. El kit experimental utiliza pymobiledevice3 como dependencia separada.
+El código propio de MirrorPhone se publica bajo la [licencia MIT](LICENSE): permite uso, modificación y distribución, incluidos usos comerciales, conservando el aviso de autoría y la licencia. Se proporciona sin garantía.
+
+Las dependencias mantienen sus licencias originales; consulta [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). MIT no sustituye las condiciones de componentes como pymobiledevice3 (GPL-3.0), utilizado por el kit experimental y ausente del ejecutable Electron.
 
 ## Documentación del proyecto
 
