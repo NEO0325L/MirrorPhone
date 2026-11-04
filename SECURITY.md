@@ -2,7 +2,7 @@
 
 No publiques claves, tokens, códigos de sala activos ni registros de emparejamiento en incidencias o pull requests. Si descubres una credencial expuesta, revócala en su proveedor antes de reemplazarla.
 
-Usa la opción privada **Report a vulnerability** del repositorio si está disponible. Si no está habilitada, solicita al mantenedor un canal privado mediante una incidencia sin detalles explotables; no publiques un ataque contra el servidor activo.
+Los informes privados de vulnerabilidades están habilitados. Usa **Security → Report a vulnerability** en este repositorio. No publiques detalles explotables ni ataques contra el servidor activo en incidencias públicas.
 
 Las claves `SESSION_SECRET` y `HF_TOKEN` pertenecen a los secretos del proveedor de alojamiento. Los tokens de prueba del código son ficticios. D1, TURN y el servicio de credenciales son servicios externos con sus propios límites y políticas.
 

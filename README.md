@@ -1,5 +1,7 @@
 # MirrorPhone
 
+<p align="center"><img src="desktop/server/public/app-icon.png" alt="Logo de MirrorPhone" width="96"></p>
+
 [![Build desktop](https://github.com/NEO0325L/MirrorPhone/actions/workflows/desktop.yml/badge.svg)](https://github.com/NEO0325L/MirrorPhone/actions/workflows/desktop.yml)
 
 Pantalla y sonido del iPhone en una aplicación de escritorio para **Windows 11 x64** y **Linux Mint 22.x x64**. Receptor Electron, emisor iOS y señalización WebRTC en Cloudflare Workers con D1.

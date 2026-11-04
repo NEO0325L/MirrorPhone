@@ -1,6 +1,6 @@
 # Cambios
 
-## 1.3.0 — versión de prueba multiplataforma
+## 1.3.0 — 2026-11-04 — versión de prueba multiplataforma
 
 - Receptor compartido para Windows 11 x64 y Linux Mint 22.x x64.
 - Paquetes Linux DEB y tar.gz; Windows ZIP e instalador NSIS mediante compilación en Windows.
