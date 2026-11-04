@@ -1,0 +1,216 @@
+MIRRORPHONE — ARCHIVO DE CONTINUACIÓN
+Actualizado: 4 de noviembre de 2026 (America/Bogota)
+Versión de escritorio: 1.3.0, preliminar
+
+LEE ESTE ARCHIVO PRIMERO
+Este documento permite continuar el desarrollo en otra sesión o equipo.
+El ZIP de continuación incluye las fuentes del proyecto, no una instalación
+lista para ejecutar. No contiene claves, certificados, datos de emparejamiento,
+node_modules, cachés, grabaciones ni el framework binario de WebRTC para iOS.
+
+1. OBJETIVO DEL PRODUCTO
+
+Compartir imagen y sonido del iPhone en una app ejecutable de escritorio,
+actualmente dirigida a Windows 11 x64 y Linux Mint 22.x x64. El usuario quiere
+un flujo sencillo: abrir el receptor, crear una sala e introducir su código
+en la app iOS. No debe requerir visitar otra página ni introducir OWNER_KEY.
+Debe funcionar entre redes distintas cuando la conexión directa o TURN lo
+permitan. Mantener baja latencia y buena calidad sin consumo innecesario.
+
+El control global del iPhone con teclado y ratón sigue pendiente. El usuario
+quiere Wi-Fi o Internet, sin USB, sin comprar accesorios y sin una Mac como
+puente. No anunciar esta función como implementada. Bluetooth se había
+considerado únicamente como último recurso, no como requisito aceptado.
+
+2. FUENTE PRINCIPAL Y ENLACES
+
+Repositorio público:
+https://github.com/NEO0325L/MirrorPhone
+
+Descargas preliminares:
+https://github.com/NEO0325L/MirrorPhone/releases/tag/v1.3.0-preview.1
+
+Servidor de señalización configurado:
+https://mirrorphone-server.caradeboli.workers.dev
+
+Estado del servidor:
+https://mirrorphone-server.caradeboli.workers.dev/api/health
+
+Compilación nativa completada correctamente:
+https://github.com/NEO0325L/MirrorPhone/actions/runs/41878220094
+
+Antes de nuevas modificaciones, consultar main y el estado real de GitHub.
+El ZIP es una instantánea: no se actualiza después de descargarlo.
+
+3. ESTADO VERIFICADO AL PREPARAR ESTA CONTINUACIÓN
+
+- Escritorio 1.3.0, Electron 44.7.1, electron-builder 26.18.0.
+- Código compartido de Windows y Linux en desktop/; no duplicar receptores.
+- El usuario había confirmado imagen y audio buenos con iPhone Build 20 y el
+  receptor macOS anterior. Conservar esas correcciones durante la adaptación.
+- Pruebas locales: salas, puertos, señalización, orígenes, cierre, audio,
+  negociación H.264 y almacenamiento seguro de Linux: correctas.
+- Pruebas del Worker sobre SQLite real en memoria: correctas; incluyen
+  concurrencia, roles, revocación, límites y aislamiento de claves ficticias.
+- Se descargó un clon limpio desde GitHub: npm ci y las pruebas pasaron.
+- GitHub Actions 41878220094 terminó SUCCESS en Ubuntu 22.04 y Windows 2022.
+  Commit comprobado: 9806773a1b5229aa737b859bce9974b97b1b68ae.
+  Los cambios posteriores en main, antes de este documento, fueron de
+  presentación, seguridad documental y enlaces de descarga.
+- Artefactos de Actions observados disponibles y sin vencer:
+  MirrorPhone-linux-x64 y MirrorPhone-windows-x64.
+  La retención configurada es 14 días; pueden vencer posteriormente.
+- La Release preliminar contiene DEB y tar.gz Linux, ZIP Windows y SHA256SUMS.
+  Esos paquetes se generaron localmente desde macOS y se verificaron sus
+  formatos, contenido y hashes remotos. No confundirlos con los nuevos
+  artefactos generados en los runners nativos.
+- El instalador NSIS se compiló correctamente en el runner Windows como parte
+  del flujo. Aún no se ha descargado, probado físicamente ni añadido a la Release.
+- FALTAN pruebas físicas en Linux Mint y Windows 11. Compilar en Ubuntu o
+  Windows Server no demuestra que audio, GPU o latencia funcionen bien en
+  el equipo final del usuario.
+- No se modificó ni desplegó de nuevo el servidor remoto en esta adaptación.
+
+4. ESTRUCTURA DEL PROYECTO
+
+README.md                  Entrada, uso, instalación y enlaces.
+CONTINUAR.txt              Este documento.
+desktop/                   Receptor Electron compartido Windows/Linux.
+  main.cjs                 Ventana, servidor local, permisos y ciclo de vida.
+  runtime.cjs              Selección de puerto y detección de servidores.
+  cloud-bridge.cjs         Proxy HTTPS hacia el servicio remoto.
+  cloud-config.json        URL pública y modo inicial; sin claves.
+  server/                  API local y recursos de interfaz.
+  server/public/receiver.js WebRTC, vídeo, métricas y negociación H.264.
+  server/public/audio-player.js  Reproducción de audio.
+  tests/                   Pruebas de regresión de escritorio.
+  package-lock.json        Dependencias fijadas.
+ios/                       Fuentes iPhone basadas en Build 20 y proyecto Xcode.
+cloudflare/                Worker, schema.sql y check-worker.mjs.
+experimental/control-wifi/ Diagnóstico experimental, no control habilitado.
+scripts/prepare-ios.py     Descarga WebRTC fijado y verifica SHA-256.
+docs/                      Arquitectura, instalación y validación.
+.github/workflows/desktop.yml   Compilación de ambas plataformas.
+CONTRIBUTING.md, SECURITY.md, CHANGELOG.md, LICENSE, THIRD_PARTY_NOTICES.md.
+
+5. CÓMO ABRIR Y SEGUIR DESDE OTRO EQUIPO
+
+Opción preferida: instalar Git y clonar el repositorio.
+
+  git clone https://github.com/NEO0325L/MirrorPhone.git
+  cd MirrorPhone
+
+Opción ZIP: extraer el archivo completo y abrir la carpeta MirrorPhone.
+El ZIP no incluye la carpeta .git ni conserva el historial local. Si vas a
+publicar cambios, conviene clonar y copiar tus modificaciones al clon.
+
+Desarrollo de escritorio, con Node.js 24 LTS y npm:
+
+  cd desktop
+  npm ci
+  npm test
+  node ../cloudflare/check-worker.mjs
+  npm start
+
+Compilar en Linux:
+
+  npm run build:linux
+
+Compilar en Windows:
+
+  npm run build:windows
+
+Resultados: desktop/dist/. No subir dist ni node_modules al historial Git.
+El workflow permite ejecución manual y etiquetas v*. No publica Releases
+por sí mismo. Para actualizar GitHub se necesita la sesión propia del usuario;
+este ZIP no lleva acceso a su cuenta.
+
+iOS:
+- Requiere macOS, Xcode, SDK/dispositivo compatibles y firma del desarrollador.
+- Usar Python 3.11 o posterior para scripts/prepare-ios.py, que utiliza
+  hashlib.file_digest. El Python 3.9 de algunas instalaciones de Xcode no basta.
+- Ejecutar desde la raíz: python3 scripts/prepare-ios.py.
+- Abrir ios/MirrorPhone.xcodeproj, seleccionar tu equipo de firma y un bundle
+  identifier único. La copia pública no contiene el equipo de firma original.
+- No cambiar la identidad de una app ya instalada sin considerar que puede
+  instalarse como una aplicación distinta y perder su configuración anterior.
+
+6. CORRECCIONES DE AUDIO/VÍDEO QUE NO DEBEN PERDERSE
+
+Audio:
+- En Electron, conectar solo WebAudio no iniciaba siempre la decodificación
+  WebRTC. MirrorAudioPlayer mantiene un elemento de audio auxiliar SILENCIADO
+  con autoplay/srcObject/play para impulsar el decodificador.
+- La única salida audible sigue siendo Web Audio a 48 kHz; evitar rutas
+  duplicadas, eco o dos relojes independientes.
+- Mantener activación por gesto del usuario, ganancia, limpieza de conexiones
+  y cancelación de reanudaciones tardías al desconectar.
+- CaptureAudioDevice.swift debe consumir los ticks acumulados del temporizador
+  Dispatch, con el límite existente; ignorarlos provocaba audio robótico.
+- Un episodio anterior de audio ausente fue causado por el silencio del sistema
+  macOS. Comprobar salida/volumen antes de atribuirlo al transporte. No forzar
+  el volumen del sistema desde el producto.
+
+Vídeo:
+- Mantener H264HardwareProbe.swift y ScreenEncoderFactory.swift. Las pantallas
+  verticales 1080x2336 requieren un nivel H.264 superior al predeterminado.
+- El receptor consulta VideoDecoder.isConfigSupported antes de ajustar el
+  nivel H.264 de la respuesta SDP; preservar perfil, audio, RTX y las condiciones
+  de negociación asimétrica. Eliminar esa corrección llegó a dejar audio sin vídeo.
+- ScreenQualityController.swift adapta resolución/FPS según bitrate y QP.
+  La selección 1080p/60 FPS son máximos, no promesas de frecuencia constante.
+- Evitar colas adicionales que acumulen frames y aumenten el retraso.
+- No prometer latencia cero. Distinguir RTT, búfer y retraso extremo a extremo.
+
+7. SEGURIDAD Y ALOJAMIENTO
+
+- Flujo actual por código de sala; la autorización OWNER_KEY es heredada.
+- Cloudflare Worker + D1 almacenan señalización temporal, no grabaciones.
+- TURN se obtiene del servicio Hugging Face/FastRTC; la clave del proveedor
+  debe permanecer como secreto del servidor, nunca dentro de las apps.
+- Secretos existentes del despliegue: SESSION_SECRET, HF_TOKEN y posiblemente
+  OWNER_KEY heredado. Este documento solo enumera sus nombres, no sus valores.
+- No pedir al usuario que pegue claves en el chat ni leerlas para incluirlas
+  en repositorios, capturas, logs o paquetes.
+- Los servicios externos tienen cuotas y disponibilidad propias. El usuario
+  no quiere cobros; no activar planes de pago ni prometer uso gratuito ilimitado.
+- Mantener sandbox de Electron, aislamiento de contexto y Node desactivado
+  en el renderizador. No usar --no-sandbox como solución de instalación.
+- Linux: no persistir credenciales con el backend safeStorage basic_text.
+- Conservar .gitignore y .gitattributes; no añadir cachés, perfiles de firma,
+  datos de confianza del teléfono ni contenido personal.
+
+8. TECLADO Y RATÓN: ESTADO EXPERIMENTAL
+
+El kit experimental/control-wifi usa pymobiledevice3 11.33.1. Permite preparar
+el entorno Windows, emparejar por Wi-Fi y comprobar servicios de desarrollo.
+Sus acciones actuales son pair, check y prepare: NO envían clics ni teclas.
+Se había comprobado en Mac acceso de solo lectura a servicios HID del iPhone;
+no se demostró control completo desde Windows ni a través de Internet.
+Las APIs normales de una app iOS no conceden control global de otras apps.
+No confundir transmisión de pantalla con permiso para inyectar entradas.
+
+9. PRÓXIMOS PASOS RECOMENDADOS
+
+1) Descargar los artefactos nativos de la compilación exitosa, inspeccionarlos
+   y decidir si sustituyen las descargas preliminares. Incorporar el instalador
+   Windows a Releases solo tras revisar el resultado y sus hashes.
+2) Probar instalación y arranque reales en Linux Mint 22.x x64 y Windows 11.
+3) Seguir docs/VALIDATION.md: orientación, pantalla completa, reproducción
+   local con voz durante al menos dos minutos, estabilidad y reconexión.
+4) Medir red/FPS/latencia antes de cambiar bitrate o búferes. Conservar imagen
+   y audio que el usuario ya confirmó como buenos.
+5) Retomar el control Wi-Fi únicamente como experimento separado y validar
+   autorizaciones/compatibilidad antes de integrarlo en el receptor distribuido.
+
+No volver a crear el proyecto desde cero ni sustituir el código estable por
+las copias antiguas de trabajo. main de GitHub y desktop/ son la base actual.
+
+10. MENSAJE QUE PUEDES PEGAR EN UNA NUEVA CONVERSACIÓN
+
+"Continúa el proyecto MirrorPhone desde el ZIP adjunto o desde
+https://github.com/NEO0325L/MirrorPhone. Lee primero CONTINUAR.txt y después
+README.md y docs/VALIDATION.md. Revisa main y GitHub Actions para actualizar
+el estado. Conserva las correcciones de audio y H.264 y no publiques secretos.
+La siguiente prioridad es probar los paquetes nativos en Linux Mint y Windows;
+el control global con teclado y ratón todavía es experimental."
