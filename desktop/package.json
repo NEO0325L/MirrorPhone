@@ -7,7 +7,8 @@
   "private": true,
   "license": "UNLICENSED",
   "author": {
-    "name": "MirrorPhone"
+    "name": "NEO0325L",
+    "url": "https://github.com/NEO0325L"
   },
   "scripts": {
     "start": "electron .",
@@ -43,7 +44,7 @@
       "category": "AudioVideo",
       "icon": "server/public/app-icon.png",
       "executableName": "mirrorphone",
-      "maintainer": "MirrorPhone <maintainers@mirrorphone.invalid>",
+      "maintainer": "NEO0325L <228749476+NEO0325L@users.noreply.github.com>",
       "desktop": {
         "entry": {
           "Name": "MirrorPhone",
@@ -73,5 +74,12 @@
     }
   },
   "homepage": "https://github.com/NEO0325L/MirrorPhone",
-  "desktopName": "mirrorphone.desktop"
+  "desktopName": "mirrorphone.desktop",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NEO0325L/MirrorPhone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NEO0325L/MirrorPhone/issues"
+  }
 }

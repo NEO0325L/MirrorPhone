@@ -1,5 +1,7 @@
 # MirrorPhone
 
+[![Build desktop](https://github.com/NEO0325L/MirrorPhone/actions/workflows/desktop.yml/badge.svg)](https://github.com/NEO0325L/MirrorPhone/actions/workflows/desktop.yml)
+
 Pantalla y sonido del iPhone en una aplicación de escritorio para **Windows 11 x64** y **Linux Mint 22.x x64**. Receptor Electron, emisor iOS y señalización WebRTC en Cloudflare Workers con D1.
 
 ## Uso
@@ -26,7 +28,7 @@ npm run build:linux    # En Linux: DEB y tar.gz x64
 npm run build:windows  # En Windows: instalador NSIS y ZIP x64
 ```
 
-Los paquetes se crean en `desktop/dist`. El flujo de GitHub Actions `desktop.yml` compila en Ubuntu y Windows y guarda los instaladores como artefactos. Se ejecuta manualmente; no publica releases ni activa servicios de pago automáticamente. Revisa la cuota de Actions de tu cuenta antes de ejecutarlo en un repositorio privado.
+Los paquetes se crean en `desktop/dist`. El flujo de GitHub Actions `desktop.yml` compila en Ubuntu y Windows y guarda los instaladores como artefactos. Se ejecuta manualmente o al publicar una etiqueta `v*`; no publica releases ni activa servicios de pago automáticamente. Revisa la cuota de Actions de tu cuenta antes de ejecutarlo en un repositorio privado.
 
 ## Estructura
 
@@ -44,3 +46,12 @@ El tráfico multimedia usa WebRTC directo cuando es posible y TURN cuando la red
 ## Licencia
 
 Código propio reservado, sin licencia de redistribución concedida. Dependencias de terceros conservan sus licencias; Electron incluye sus avisos en los paquetes distribuidos. El kit experimental utiliza pymobiledevice3 como dependencia separada.
+
+## Documentación del proyecto
+
+- [Arquitectura y flujo de datos](docs/ARCHITECTURE.md)
+- [Estado y pruebas de validación](docs/VALIDATION.md)
+- [Contribuciones y desarrollo](CONTRIBUTING.md)
+- [Seguridad](SECURITY.md)
+- [Historial de cambios](CHANGELOG.md)
+- [Avisos de terceros](THIRD_PARTY_NOTICES.md)
