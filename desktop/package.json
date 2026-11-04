@@ -1,0 +1,76 @@
+{
+  "name": "mirrorphone-desktop",
+  "productName": "MirrorPhone",
+  "version": "1.3.0",
+  "description": "Pantalla y sonido del iPhone en Windows y Linux Mint",
+  "main": "main.cjs",
+  "private": true,
+  "license": "UNLICENSED",
+  "author": {
+    "name": "MirrorPhone"
+  },
+  "scripts": {
+    "start": "electron .",
+    "test": "node check-runtime.cjs && node tests/audio-player.cjs && node tests/screen-video-answer.cjs && node tests/linux-storage.cjs",
+    "build:linux": "electron-builder --linux deb tar.gz --x64 --publish never",
+    "build:windows": "electron-builder --win nsis zip --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "44.7.1",
+    "electron-builder": "26.18.0"
+  },
+  "build": {
+    "appId": "com.mirrorphone.desktop",
+    "productName": "MirrorPhone",
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.cjs",
+      "runtime.cjs",
+      "cloud-bridge.cjs",
+      "cloud-config.json",
+      "server/**/*",
+      "!server/public/test-sender.*"
+    ],
+    "artifactName": "MirrorPhone-${version}-${os}-${arch}.${ext}",
+    "linux": {
+      "target": [
+        "deb",
+        "tar.gz"
+      ],
+      "category": "AudioVideo",
+      "icon": "server/public/app-icon.png",
+      "executableName": "mirrorphone",
+      "maintainer": "MirrorPhone <maintainers@mirrorphone.invalid>",
+      "desktop": {
+        "entry": {
+          "Name": "MirrorPhone",
+          "Comment": "Pantalla y sonido del iPhone",
+          "StartupWMClass": "MirrorPhone"
+        }
+      },
+      "syncDesktopName": true
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "artifactName": "MirrorPhone-${version}-windows-${arch}-setup.${ext}"
+    },
+    "compression": "normal",
+    "deb": {
+      "compression": "gz"
+    }
+  },
+  "homepage": "https://mirrorphone-server.caradeboli.workers.dev",
+  "desktopName": "mirrorphone.desktop"
+}

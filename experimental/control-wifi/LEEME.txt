@@ -1,0 +1,70 @@
+MIRRORPHONE — PRUEBA INALÁMBRICA DE CONTROL
+17 de octubre de 2026
+
+ESTADO
+Este paquete prueba emparejamiento y disponibilidad del servicio de entrada por
+Wi-Fi. Todavía NO añade clics ni teclado a MirrorPhone. No necesita Bluetooth,
+USB ni una Mac encendida como puente. Windows no se ha validado físicamente.
+
+La investigación y la lectura del servicio HID en el iPhone de pruebas pasaron
+sobre la conexión inalámbrica existente de la Mac. Eso no demuestra aún que la
+combinación Windows/iPhone funcione de extremo a extremo.
+
+REQUISITOS
+- Windows 11, Python 3.10+ con Python Launcher; recomendado Python 3.12.
+  Instalación oficial: https://www.python.org/downloads/windows/
+- iPhone con iOS 27+, desbloqueado, Modo de desarrollador activado.
+- PC e iPhone en la misma red Wi-Fi. La red debe permitir comunicación local y
+  descubrimiento mDNS; una red de invitados con aislamiento puede impedirlo.
+- Autorización explícita en el iPhone para emparejar ESTE PC.
+
+PASOS
+1. Extrae el ZIP completo en una carpeta del PC. No ejecutes archivos dentro
+   del ZIP sin extraerlo.
+2. Abre «1 - Preparar Windows.cmd». Instala una versión fija de pymobiledevice3
+   desde PyPI en un entorno aislado de tu usuario. No requiere Bluetooth ni
+   instala controladores USB. No modifica políticas de PowerShell ni firewall.
+3. Abre «2 - Emparejar por WiFi.cmd» y deja abierta la ventana.
+4. En el iPhone entra en Ajustes > Privacidad y seguridad > Modo de desarrollador.
+   Busca la opción de emparejar un ordenador. Según la versión de iOS puede
+   estar en Ajustes > Desarrollador > Macs emparejadas.
+5. Selecciona «MirrorPhone-Windows» y escribe el PIN que aparezca en Windows.
+   Ese PIN autoriza el PC para desarrollo y es distinto del código de sala.
+   Solo se usa para configurar el control; no sustituye las salas de vídeo.
+6. Cuando Windows indique que guardó el emparejamiento, abre
+   «3 - Comprobar control WiFi.cmd».
+7. El resultado esperado es wifiConnected=true, hidServiceAvailable=true y
+   touchSurfaceAvailable=true. Esta comprobación no envía ninguna pulsación.
+   Devuelve el resultado o el mensaje de error para continuar la integración.
+8. Si falta el componente Apple de desarrollo, abre
+   «4 - Preparar componentes Apple.cmd». Puede descargar y montar una imagen
+   de desarrollo firmada por Apple. Después repite el paso 6.
+
+LÍMITES
+- Primero se valida Wi-Fi local. El control entre redes distintas por Internet
+  aún no está implementado. No abras puertos del router ni expongas el servicio
+  de desarrollo del iPhone a Internet.
+- Este mecanismo usa servicios de desarrollo no documentados para apps de
+  consumo. No se presenta como función compatible con App Store o todos los iOS.
+- Las actualizaciones de iOS pueden cambiarlo. Tras reiniciar el iPhone puede
+  hacer falta preparar de nuevo los componentes de desarrollo.
+- La versión fija de la dependencia se selecciona explícitamente por Wi-Fi,
+  sin probar USB ni usar mecanismos exclusivos de macOS.
+
+DATOS LOCALES
+La biblioteca guarda las claves de emparejamiento en su caché del perfil de
+Windows. MirrorPhone guarda solo el identificador elegido y el resultado en
+%USERPROFILE%\.mirrorphone-control. No empaquetes ni compartas las claves de
+pymobiledevice3, ni las pegues en el chat o en Cloudflare. El archivo
+resultado.json no contiene claves. La preparación descarga dependencias de
+PyPI y, si se solicita el paso 8, componentes de desarrollo Apple.
+
+FUENTES Y LICENCIAS
+El código de esta prueba se distribuye con su fuente. pymobiledevice3 es una
+dependencia externa GPL-3.0: su licencia y las de sus dependencias se conservan
+en el entorno instalado. La integración comercial definitiva requiere revisar
+la distribución y sus licencias antes de incluir estas herramientas.
+https://github.com/doronz88/pymobiledevice3
+https://doronz88.github.io/pymobiledevice3/guides/cli-recipes/
+https://doronz88.github.io/pymobiledevice3/guides/ios17-tunnels/
+https://github.com/jkcoxson/idevice_pair#over-wi-fi-with-iphone-or-ipad

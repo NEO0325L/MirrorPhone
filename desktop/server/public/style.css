@@ -1,0 +1,23 @@
+:root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#edf3fb;background:#101215}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:36px}main{width:min(1060px,100%)}header,footer,.connection{display:flex;align-items:center;gap:12px;justify-content:space-between}header{margin-bottom:28px}.eyebrow{font-size:11px;letter-spacing:.18em;color:#73d6c4;margin:0 0 7px}h1{font-size:30px;margin:0}h2{font-size:17px;margin:0 0 8px}p{color:#9ba6b6;font-size:14px;line-height:1.6;margin:0}.pill{border:1px solid #334042;border-radius:30px;padding:8px 13px;color:#80ddca;font-size:12px}.connection{background:#191e25;border:1px solid #2b333f;border-radius:12px;padding:20px;margin-bottom:14px}.connection>div{flex:1}.connection p{max-width:560px}button{cursor:pointer;border:1px solid #394556;border-radius:7px;background:#252f3c;color:#f2f6fc;padding:10px 15px;font-size:13px;white-space:nowrap}button:hover{background:#354258}button:disabled{opacity:.4;cursor:default}#connect{background:#82d9c5;color:#0c2925;border-color:#82d9c5;font-weight:650}.pairing{display:flex;align-items:center;gap:18px;background:#172a29;border:1px solid #31534d;border-radius:9px;padding:12px 20px;margin-bottom:14px}.pairing[hidden]{display:none}.pairing span{font-size:13px;color:#9ebcb5}.pairing strong{font-size:26px;letter-spacing:.15em;font-variant-numeric:tabular-nums}.screen{position:relative;background:#050608;border:1px solid #2b333f;border-radius:14px;height:var(--viewer-height, min(62dvh,690px));min-height:240px;overflow:hidden;display:block;isolation:isolate}#video{position:absolute;inset:0;display:block;width:100%;height:100%;min-width:0;min-height:0;max-width:100%;max-height:100%;object-fit:contain;object-position:center;background:#050608}#empty{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;text-align:center;padding:25px;pointer-events:none}.phone{font-size:72px;color:#43566d}#empty h2{margin-top:14px}footer{padding:17px 0}.metrics{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:#97a6b9;font-variant-numeric:tabular-nums}.note{font-size:12px}.error{margin-top:12px;color:#ffa39f}input,select{background:#202a35;color:#fff;border:1px solid #40516a;border-radius:6px;padding:12px}.test{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}canvas{max-width:100%;border-radius:14px}button:focus-visible{outline:2px solid #82d9c5;outline-offset:4px}@media(max-width:700px){body{padding:20px}.connection{flex-wrap:wrap}.connection>div{flex-basis:100%}.pairing{flex-wrap:wrap}.metrics{gap:10px}.screen{height:var(--viewer-height,55dvh)}footer{align-items:flex-start}}
+
+.brand{display:flex;align-items:center;gap:14px}.brand img{border-radius:12px;flex-shrink:0}
+
+/* A replaced video element must not size a grid track from its intrinsic resolution. */
+.screen:is(:fullscreen, :-webkit-full-screen),body.viewer-expanded .screen{
+ position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;
+ min-width:0;min-height:0;max-width:none;max-height:none;
+ margin:0;padding:0;border:0;border-radius:0;background:#000;z-index:1000;
+}
+body.viewer-expanded{overflow:hidden}
+.viewer-exit{position:absolute;right:18px;bottom:18px;z-index:2;background:#16212bd9;box-shadow:0 2px 12px #0008}
+.viewer-exit[hidden]{display:none}
+
+.player-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.volume-control{display:flex;align-items:center;gap:7px;font-size:12px;color:#9ba6b6}.volume-control input{width:85px;padding:0;accent-color:#82d9c5}footer{flex-wrap:wrap}
+.viewer-sound{position:absolute;left:18px;bottom:18px;z-index:2;background:#16212bd9;box-shadow:0 2px 12px #0008}.viewer-sound[hidden]{display:none}
+
+.network-info{margin-bottom:14px;padding:12px 16px;border:1px solid #2b333f;border-radius:9px;background:#191e25}.network-info p{font-size:12px}.network-info #serverAddresses p{color:#80ddca;font-size:14px;overflow-wrap:anywhere}.network-info label{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px;font-size:13px}.network-info label[hidden]{display:none}
+
+/* Compact desktop chrome leaves more space for the live screen. */
+body{padding:22px}header{margin-bottom:18px}.connection{padding:16px}.network-info{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}.network-info>p{flex-basis:100%}#serverAddresses{flex:1}#copyAddress{padding:7px 12px;font-size:12px}#copyAddress[hidden]{display:none}
+
+.cloud-settings{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 16px;margin-bottom:14px;border:1px solid #334042;border-radius:12px}.cloud-settings label{display:flex;align-items:center;gap:10px;font-size:13px}.cloud-settings p{flex:1;font-size:12px}.cloud-settings button[hidden]{display:none}
