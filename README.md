@@ -16,6 +16,8 @@ No requiere introducir OWNER_KEY ni abrir una página adicional. El servidor pre
 
 ## Instalación
 
+[Descargar la versión de prueba para Windows y Linux Mint](https://github.com/NEO0325L/MirrorPhone/releases/tag/v1.3.0-preview.1). Los paquetes todavía necesitan validación en equipos reales.
+
 - **Linux Mint:** consulta [la guía de Linux](docs/LINUX-MINT.md). El paquete recomendado es `.deb`.
 - **Windows:** consulta [la guía de Windows](docs/WINDOWS.md). Instalador `.exe` o paquete ZIP completo.
 - **Desde código:** Node.js 24 LTS y npm; entra en `desktop`, ejecuta `npm ci` y `npm start`.
