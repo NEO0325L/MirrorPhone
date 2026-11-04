@@ -53,6 +53,7 @@ Código propio reservado, sin licencia de redistribución concedida. Dependencia
 
 ## Documentación del proyecto
 
+- [Continuar el proyecto en otra sesión o equipo](CONTINUAR.txt)
 - [Arquitectura y flujo de datos](docs/ARCHITECTURE.md)
 - [Estado y pruebas de validación](docs/VALIDATION.md)
 - [Contribuciones y desarrollo](CONTRIBUTING.md)
