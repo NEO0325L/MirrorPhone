@@ -58,7 +58,8 @@
         "nsis",
         "zip"
       ],
-      "signAndEditExecutable": false
+      "signExecutable": false,
+      "icon": "build/icon.ico"
     },
     "nsis": {
       "oneClick": false,
@@ -71,6 +72,6 @@
       "compression": "gz"
     }
   },
-  "homepage": "https://mirrorphone-server.caradeboli.workers.dev",
+  "homepage": "https://github.com/NEO0325L/MirrorPhone",
   "desktopName": "mirrorphone.desktop"
 }
